@@ -1,0 +1,24 @@
+﻿@using System.Threading;
+
+@model decimal
+
+@{
+    var currentThread = Thread.CurrentThread;
+}
+
+<h1>Using String.Format("{0:C2}", value)</h1>
+<div>@string.Format("{0:C2}", Model)</div>
+
+<h1>Server culture</h1>
+<ul>
+    <li>culture name: <strong>@currentThread.CurrentCulture.Name</strong></li>
+    <li> Moeda @Model.ToString("C")</li>
+</ul>
+
+<h1>UI culture</h1> 
+<ul>
+    <li>culture name: <strong>@Thread.CurrentThread.CurrentUICulture.Name</strong></li>
+    <li>
+        Moeda @Model.ToString("C", currentThread.CurrentUICulture)
+    </li>
+</ul>
